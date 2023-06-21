@@ -2,6 +2,8 @@
 
 # Written in PowerShell and .NET
 
+<code><img height="300" src="https://github.com/ViggoMode2021/PowerShellScripts/blob/main/LearnWindowsServerAndPowerShell/EliteShell-Ico.png?raw=true"></code>
+
 EliteShell is a Windows desktop application/game designed for users to practice PowerShell cmdlets for Windows and
 Windows Server administration and daily tasks. For each correct answer, users receive points that they can use to 'buy'
 other PowerShell system administration scripts from GitHub. These solved practice problems, answers, time, date, and points
@@ -32,7 +34,3 @@ summary of user progress by going to 'View Score + Stats'.
 
 4. Problems that completed will change from blue to green on the dropdown. If clicked on, their titles will change
 from black to green with (COMPLETED) appended to them.
-
-<code><img height="50" src="https://github.com/ViggoMode2021/PowerShellScripts/blob/main/LearnWindowsServerAndPowerShell/EliteShell-Ico.png?raw=true"></code>
-
-
