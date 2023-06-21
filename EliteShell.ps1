@@ -102,6 +102,7 @@ $Networking_Strip_Menu_Item_Practice_6 = New-Object System.Windows.Forms.ToolStr
 $Networking_Strip_Menu_Item_Practice_7 = New-Object System.Windows.Forms.ToolStripMenuItem
 $Networking_Strip_Menu_Item_Practice_8 = New-Object System.Windows.Forms.ToolStripMenuItem
 $Networking_Strip_Menu_Item_Practice_9 = New-Object System.Windows.Forms.ToolStripMenuItem
+$Networking_Strip_Menu_Item_Practice_10 = New-Object System.Windows.Forms.ToolStripMenuItem
 
 $Windows_Registry_Strip_Menu_Item_Practice = New-Object System.Windows.Forms.ToolStripMenuItem
 $Windows_Registry_Strip_Menu_Item_Practice_2 = New-Object System.Windows.Forms.ToolStripMenuItem
@@ -4362,6 +4363,241 @@ if ($Body.Text = $Random_OSI_Question){
 	$Input_Box.Clear()
 }
 
+## Networking 10 ##
+
+$Networking_Strip_Menu_Item_Practice_10.Name = "Networking_Strip_Menu_Item_Practice_10"
+$Networking_Strip_Menu_Item_Practice_10.Size = New-Object System.Drawing.Size(35, 20)
+$Networking_Strip_Menu_Item_Practice_10.Text = "Networking #10 (OSI Model #2 - No PowerShell)"
+
+function On_Click_Networking_Strip_Menu_Item_10($Sender,$e){
+
+    if($Game_Score_File -eq $null){
+
+    $MessageBoxTitle = "No score file loaded."
+
+    $MessageBoxBody = "No game is loaded. Your results will not be recorded."
+
+    $Confirmation = [System.Windows.MessageBox]::Show($MessageBoxBody,$MessageBoxTitle,$ButtonTypeOk,$MessageIconError)
+
+    }
+
+    $Completed_In.Text= ""
+
+    $Correct_Incorrect.Text= ""
+
+	$Timer_Start_Time.Stop()
+
+    $Timer = [System.Diagnostics.Stopwatch]::StartNew()
+
+	$global:Timer_Start_Time = $Timer
+
+    $Title.Text= "Networking #10"
+
+	$Title.ForeColor = 'Blue'
+
+	$OSI_Questions = "What layer allows hosts and applications to use a common language; `nperforms data formatting, encryption, and compression?", "What layer establishes, maintains, and terminates user connections?", "What layer ensures accurate delivery of data through flow control, segmentation and reassembly, error correction, and acknowledgement?", "What layer establishes network connections; translates network addresses into their physical counterparts and determines routing?", "What layer 
+    packages data in frames appropriate to network transmission method?", "What layer manages signaling to and from physical network connections?"
+
+    $Random_OSI_Question = $OSI_Questions | Get-Random
+
+    $global:Random_OSI_Question = $Random_OSI_Question
+
+	$Body.Text = $Random_OSI_Question
+	
+    if($Random_OSI_Question -eq "What layer allows hosts and applications to use a common language; `nperforms data formatting, encryption, and compression?"){
+    
+    $Correct_Answer = "Presentation"
+
+	$global:Correct_Answer = $Correct_Answer
+    
+    }
+    
+    if($Random_OSI_Question -eq "What layer establishes, maintains, and terminates user connections?"){
+  
+	$Correct_Answer = "Session"
+
+	$global:Correct_Answer = $Correct_Answer
+    
+    }
+    
+    if($Random_OSI_Question -eq "What layer ensures accurate delivery of data through flow control, segmentation and reassembly, error correction, and acknowledgement?"){
+    
+    $Correct_Answer = "Transport"
+
+	$global:Correct_Answer = $Correct_Answer
+    
+    }
+    
+    if($Random_OSI_Question -eq "What layer establishes network connections; translates network addresses into their physical counterparts and determines routing?"){
+    
+    $Correct_Answer = "Network"
+
+	$global:Correct_Answer = $Correct_Answer
+    
+    }
+    
+    if($Random_OSI_Question -eq "What layer packages data in frames appropriate to network transmission method?"){
+
+	$Correct_Answer = "Data Link"
+
+	$global:Correct_Answer = $Correct_Answer
+    
+    }
+    
+    if($Random_OSI_Question -eq "What layer manages signaling to and from physical network connections?"){
+
+	$Correct_Answer = "Physical"
+
+	$global:Correct_Answer = $Correct_Answer
+    
+    }
+    
+
+    $Form.Controls.RemoveByKey("The_Submit_Button")
+
+	$The_Submit_Button = New-Object System.Windows.Forms.Button
+
+	$The_Submit_Button.Name = "The_Submit_Button"
+
+	$The_Submit_Button.Text = "Submit"
+
+	$The_Submit_Button.AutoSize = $True
+
+	$The_Submit_Button.Font = 'Verdana,12,style=Bold'
+
+	$The_Submit_Button.ForeColor = 'Blue'
+
+	$The_Submit_Button.Location = New-Object System.Drawing.Point(30,200)
+
+	$The_Submit_Button.Add_Click({Selected_Networking_Practice_Problem_10})
+
+	$Form.Controls.RemoveByKey("The_Learn_More_Button")
+
+    $The_Learn_More_Button = New-Object System.Windows.Forms.Button
+
+    $The_Learn_More_Button.Name = "The_Learn_More_Button"
+
+    $The_Learn_More_Button.Text = "Learn More"
+
+    $The_Learn_More_Button.AutoSize = $True
+
+    $The_Learn_More_Button.Font = 'Calibri,12,style=Bold'
+
+    $The_Learn_More_Button.ForeColor = 'Blue'
+
+    $The_Learn_More_Button.Location = New-Object System.Drawing.Point(200,200)
+
+    $The_Learn_More_Button.Add_Click({Start-Process "https://www.imperva.com/learn/application-security/osi-model/"})
+
+    $Form.Controls.AddRange(@($Menu_Bar, $Title, $Body, $The_Submit_Button, $The_Learn_More_Button, $Input_Box))
+
+	$Problem_Completed_Physical = "Physical"
+
+	$Problem_Completed_Physical_Check = Select-String $Game_Score_File -Pattern $Problem_Completed_Physical
+
+	$Problem_Completed_Data_Link = "Data Link"
+
+	$Problem_Completed_Data_Link_Check = Select-String $Game_Score_File -Pattern $Problem_Completed_Data_Link
+
+	$Problem_Completed_Network = "Network"
+
+	$Problem_Completed_Network_Check = Select-String $Game_Score_File -Pattern $Problem_Completed_Network
+
+	$Problem_Completed_Transport = "Transport"
+
+	$Problem_Completed_Transport_Check = Select-String $Game_Score_File -Pattern $Problem_Completed_Transport
+
+	$Problem_Completed_Session = "Session"
+
+	$Problem_Completed_Session_Check = Select-String $Game_Score_File -Pattern $Problem_Completed_Session
+
+	$Problem_Completed_Presentation = "Presentation"
+
+	$Problem_Completed_Presentation_Check = Select-String $Game_Score_File -Pattern $Problem_Completed_Presentation
+
+	$Problem_Completed_Application = "Application"
+
+	$Problem_Completed_Application_Check = Select-String $Game_Score_File -Pattern $Problem_Completed_Application
+
+	if($Problem_Completed_Physical_Check -and $Problem_Completed_Data_Link_Check -and $Problem_Completed_Network_Check -and $Problem_Completed_Transport_Check -and 
+	$Problem_Completed_Transport_Check -and $Problem_Completed_Session_Check -and $Problem_Completed_Presentation_Check -and $Problem_Completed_Application_Check -ne $null) {
+
+	$Title.Text = "Networking #10 (COMPLETED)"
+	$Title.ForeColor = 'Green'
+	
+	$Networking_Strip_Menu_Item_Practice_10.Text = 'Networking #10 (OSI Model #2 - No PowerShell)'
+	$Networking_Strip_Menu_Item_Practice_10.ForeColor = 'Green'
+
+}
+	
+	}
+
+	else {
+
+	$Title.Text = "Networking #10"
+
+	}
+
+function Selected_Networking_Practice_Problem_10{
+
+$Answer = @($Input_Box.Text)
+
+if ($Body.Text = $Random_OSI_Question){
+	if($Input_Box.Text -eq $Correct_Answer){
+
+	$Time_Elapsed = $Timer_Start_Time.Elapsed
+
+	$Timer = $([string]::Format("`{0:d2}:{1:d2}:{2:d2}",
+	$Time_Elapsed.hours,
+	$Time_Elapsed.minutes,
+	$Time_Elapsed.seconds))
+
+	$New_Row | Add-Content -Path $Game_Score_File
+
+    $New_Row = New-Object PsObject -Property @{Problem = "Networking #10" ; Description = $Random_OSI_Question ; Result = $Correct_Answer ; CompletionTime = $Timer ; Date = $Date ; Points = "2"}
+
+    $New_Results += $New_Row
+
+    $New_Results | Export-CSV -append $Game_Score_File
+
+	$Timer.Stop
+
+	$CSV_Length = Import-CSV $Game_Score_File | Measure-Object | Select-Object -expand Count
+
+	$global:Number_Of_Correct_Answers = $CSV_Length
+
+	$Total_Number_Of_Answers_Label.Text = "$Number_Of_Correct_Answers total problems solved"
+
+	$CSV_Stuff = Import-CSV -Path $Game_Score_File
+
+	$Total_Score = $CSV_Stuff | Measure-Object Points -Sum | Select-Object -expand Sum | Out-String
+
+	$global:Total_Score = $Total_Score
+
+	$Total_Score_Label.Text = "$Total_Score total points"
+
+    Invoke-Expression Dropdown_Problem_Completed_Check
+
+    $Body.Text = $Random_OSI_Question
+
+    $Correct_Incorrect.Text = "Correct, your answer was $Answer."
+
+    $Correct_Incorrect.ForeColor = 'Green'
+    $Completed_In.Text = "Completed in $Timer"
+
+    }
+
+	else{
+		$Body.Text = $Random_OSI_Question
+        $Correct_Incorrect.Text = "Incorrect, your answer was $Answer."
+        $Correct_Incorrect.ForeColor = 'Red'
+        }
+	}
+
+	$Input_Box.Clear()
+}
+
+
 
 $Networking_Strip_Menu_Item_Practice.Add_Click( { On_Click_Networking_Strip_Menu_Item $Networking_Strip_Menu_Item_Practice $EventArgs} )
 
@@ -4381,7 +4617,9 @@ $Networking_Strip_Menu_Item_Practice_8.Add_Click( { On_Click_Networking_Strip_Me
 
 $Networking_Strip_Menu_Item_Practice_9.Add_Click( { On_Click_Networking_Strip_Menu_Item_9 $Networking_Strip_Menu_Item_Practice_9 $EventArgs} )
 
-$Networking_Strip_Menu_Item.DropDownItems.AddRange(@($Networking_Strip_Menu_Item_Practice, $Networking_Strip_Menu_Item_Practice_2, $Networking_Strip_Menu_Item_Practice_3, $Networking_Strip_Menu_Item_Practice_4, $Networking_Strip_Menu_Item_Practice_5, $Networking_Strip_Menu_Item_Practice_6, $Networking_Strip_Menu_Item_Practice_7, $Networking_Strip_Menu_Item_Practice_8, $Networking_Strip_Menu_Item_Practice_9))
+$Networking_Strip_Menu_Item_Practice_10.Add_Click( { On_Click_Networking_Strip_Menu_Item_10 $Networking_Strip_Menu_Item_Practice_10 $EventArgs} )
+
+$Networking_Strip_Menu_Item.DropDownItems.AddRange(@($Networking_Strip_Menu_Item_Practice, $Networking_Strip_Menu_Item_Practice_2, $Networking_Strip_Menu_Item_Practice_3, $Networking_Strip_Menu_Item_Practice_4, $Networking_Strip_Menu_Item_Practice_5, $Networking_Strip_Menu_Item_Practice_6, $Networking_Strip_Menu_Item_Practice_7, $Networking_Strip_Menu_Item_Practice_8, $Networking_Strip_Menu_Item_Practice_9, $Networking_Strip_Menu_Item_Practice_10))
 
 ## start Windows General menu item ##
 
