@@ -1,24 +1,24 @@
  #Import-Module ActiveDirectory
 
-Add-Type -AssemblyName System.Windows.Forms
+Add-Type -AssemblyName System.Windows.Forms #Add .NET framework for Forms
 
-Add-Type -AssemblyName PresentationCore,PresentationFramework
+Add-Type -AssemblyName PresentationCore,PresentationFramework #Add .NET framework for Presentation
 
-$Date = Get-Date -format "MM-dd-yy"
+$Date = Get-Date -format "MM-dd-yy" # Get date
 
-$OS = (Get-WMIObject win32_operatingsystem) | Select-Object -expand Name | Out-String
+$OS = (Get-WMIObject win32_operatingsystem) | Select-Object -expand Name | Out-String # Get OS
 
-$OS = $OS.Replace("|C:\WINDOWS|\Device\Harddisk0\Partition3", "")
+$OS = $OS.Replace("|C:\WINDOWS|\Device\Harddisk0\Partition3", "") # Remove superflous details
 
-$Screen_Resolution = (Get-WmiObject -Class Win32_VideoController).VideoModeDescription;
+$Screen_Resolution = (Get-WmiObject -Class Win32_VideoController).VideoModeDescription; # Get screen res
 
-$Architecture = $Env:PROCESSOR_ARCHITECTURE
+$Architecture = $Env:PROCESSOR_ARCHITECTURE # Get processor type
 
-$PowerShell_Version = (Get-ItemProperty -Path HKLM:\SOFTWARE\Microsoft\PowerShell\3\PowerShellEngine -Name 'PowerShellVersion').PowerShellVersion
+$PowerShell_Version = (Get-ItemProperty -Path HKLM:\SOFTWARE\Microsoft\PowerShell\3\PowerShellEngine -Name 'PowerShellVersion').PowerShellVersion # Find PS version
 
-$ErrorActionPreference = 'SilentlyContinue'
+$ErrorActionPreference = 'SilentlyContinue' 
 
-$Script_Or_Executable_Name = $MyInvocation.InvocationName
+$Script_Or_Executable_Name = $MyInvocation.InvocationName # Find name of current script or executable
 
 if($Screen_Resolution -ne "1925 x 1080 x 4294967296 colors"){
 
