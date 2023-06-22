@@ -78,7 +78,7 @@ $Load_Game_Strip_Menu_Item = New-Object System.Windows.Forms.ToolStripMenuItem
 $View_Score_And_Stats_Strip_Menu_Item = New-Object System.Windows.Forms.ToolStripMenuItem
 $View_My_System_Information_Strip_Menu_Item = New-Object System.Windows.Forms.ToolStripMenuItem
 $View_EliteShell_Answers_Strip_Menu_Item = New-Object System.Windows.Forms.ToolStripMenuItem
-$Read_Me_Strip_Menu_Item = New-Object System.Windows.Forms.ToolStripMenuItem
+$View_README_Strip_Menu_Item = New-Object System.Windows.Forms.ToolStripMenuItem
 $Windows_General_Strip_Menu_Item_Learn = New-Object System.Windows.Forms.ToolStripMenuItem
 
 $Windows_General_Strip_Menu_Item_2 = New-Object System.Windows.Forms.ToolStripMenuItem
@@ -108,7 +108,7 @@ $Windows_Registry_Strip_Menu_Item_Practice = New-Object System.Windows.Forms.Too
 $Windows_Registry_Strip_Menu_Item_Practice_2 = New-Object System.Windows.Forms.ToolStripMenuItem
 
 $Score_Box = New-Object System.Windows.Forms.GroupBox
-$Score_Box.Location = New-Object System.Drawing.Size(1550,50)
+$Score_Box.Location = New-Object System.Drawing.Size(1540,50)
 $Score_Box.Size = New-Object System.Drawing.Size(400,400)
 $Score_Box.Text = "Current Stats:"
 
@@ -243,18 +243,20 @@ $Title.AutoSize = $true
 
 $Title.Font = 'Verdana,11,style=Bold'
 
-$Title.Location = New-Object System.Drawing.Point(30,40)
+$Title.ForeColor = 'Blue'
+
+$Title.Location = New-Object System.Drawing.Point(30,45)
 
 
 $Body = New-Object $Label_Object
 
-$Body.Text= "Please create a new game, load a game, or just start practicing by selecting a practice problem from the dropdown below."
+$Body.Text= "Please create a new game, load a game, or just start practicing by selecting a `npractice problem from the dropdown below."
 
 $Body.AutoSize = $true
 
 $Body.Font = 'Verdana,11,style=Bold'
 
-$Body.Location = New-Object System.Drawing.Point(30,80)
+$Body.Location = New-Object System.Drawing.Point(30,90)
 
 
 $Correct_Incorrect = New-Object $Label_Object
@@ -315,7 +317,7 @@ $Total_Unique_Problems_Label.Font = 'Calibri,12,style=Bold'
 
 $Total_Unique_Problems_Label.ForeColor = 'Blue'
 
-$Total_Unique_Problems_Label.Location = New-Object System.Drawing.Point(1600,210)
+$Total_Unique_Problems_Label.Location = New-Object System.Drawing.Point(1550,210)
 
 
 $Scripts_Purchased_Label = New-Object $Label_Object
@@ -408,11 +410,11 @@ $View_EliteShell_Answers_Strip_Menu_Item.Name= "View_EliteShell_Answers_Strip_Me
 $View_EliteShell_Answers_Strip_Menu_Item.Size = New-Object System.Drawing.Size(152, 22)
 $View_EliteShell_Answers_Strip_Menu_Item.Text = "View EliteShell Answers"
 
-$Read_Me_Strip_Menu_Item.Name= "Read_Me_Strip_Menu_Item"
-$Read_Me_Strip_Menu_Item.Size = New-Object System.Drawing.Size(152, 22)
-$Read_Me_Strip_Menu_Item.Text = "Read Me"
+$View_README_Strip_Menu_Item.Name= "View_README_Strip_Menu_Item"
+$View_README_Strip_Menu_Item.Size = New-Object System.Drawing.Size(152, 22)
+$View_README_Strip_Menu_Item.Text = "Read Me"
 
-$File_Menu_Item.DropDownItems.AddRange(@($New_Game_Strip_Menu_Item, $Load_Game_Strip_Menu_Item, $View_My_System_Information_Strip_Menu_Item, $View_EliteShell_Answers_Strip_Menu_Item, $Read_Me_Strip_Menu_Item))
+$File_Menu_Item.DropDownItems.AddRange(@($New_Game_Strip_Menu_Item, $Load_Game_Strip_Menu_Item, $View_My_System_Information_Strip_Menu_Item, $View_EliteShell_Answers_Strip_Menu_Item, $View_README_Strip_Menu_Item))
 
 function On_Click_New_Game_Strip_Menu_Item($Sender,$e){
 
@@ -1008,6 +1010,12 @@ $Confirmation = [System.Windows.MessageBox]::Show($MessageBoxBody,$MessageBoxTit
 }
 }
 
+function On_Click_View_README{
+
+Start-Process "https://github.com/ViggoMode2021/EliteShell/tree/main#readme"
+
+}
+
 function On_Click_View_Score_And_Stats_Strip_Menu_Item{
 
 if($Number_Of_Correct_Answers -eq 0){
@@ -1100,6 +1108,8 @@ $View_Score_And_Stats_Strip_Menu_Item.Add_Click( { On_Click_View_Score_And_Stats
 $View_My_System_Information_Strip_Menu_Item.Add_Click( { On_Click_View_My_System_Information_Strip_Menu_Item $View_My_System_Information_Strip_Menu_Item $EventArgs} )
 
 $View_EliteShell_Answers_Strip_Menu_Item.Add_Click( { On_Click_View_EliteShell_Answers_Strip_Menu_Item $View_My_EliteShell_Answers_Strip_Menu_Item $EventArgs} )
+
+$View_README_Strip_Menu_Item.Add_Click( { On_Click_View_README $View_README_Strip_Menu_Item $EventArgs} )
 
 ## end File menu item ##
 
@@ -4598,8 +4608,6 @@ if ($Body.Text = $Random_OSI_Question){
 
 	$Input_Box.Clear()
 }
-
-
 
 $Networking_Strip_Menu_Item_Practice.Add_Click( { On_Click_Networking_Strip_Menu_Item $Networking_Strip_Menu_Item_Practice $EventArgs} )
 
