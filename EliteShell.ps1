@@ -4128,6 +4128,7 @@ if ($Body.Text = "Complete the 'netsh' command to show all stored WLAN profiles 
 $Networking_Strip_Menu_Item_Practice_9.Name = "Networking_Strip_Menu_Item_Practice_9"
 $Networking_Strip_Menu_Item_Practice_9.Size = New-Object System.Drawing.Size(35, 20)
 $Networking_Strip_Menu_Item_Practice_9.Text = "Networking #9 (OSI Model - No PowerShell)"
+$Networking_Strip_Menu_Item_Practice_9.ForeColor = 'Blue'
 
 function On_Click_Networking_Strip_Menu_Item_9($Sender,$e){
 
@@ -4368,6 +4369,7 @@ if ($Body.Text = $Random_OSI_Question){
 $Networking_Strip_Menu_Item_Practice_10.Name = "Networking_Strip_Menu_Item_Practice_10"
 $Networking_Strip_Menu_Item_Practice_10.Size = New-Object System.Drawing.Size(35, 20)
 $Networking_Strip_Menu_Item_Practice_10.Text = "Networking #10 (OSI Model #2 - No PowerShell)"
+$Networking_Strip_Menu_Item_Practice_10.ForeColor = 'Blue'
 
 function On_Click_Networking_Strip_Menu_Item_10($Sender,$e){
 
@@ -4395,7 +4397,7 @@ function On_Click_Networking_Strip_Menu_Item_10($Sender,$e){
 
 	$Title.ForeColor = 'Blue'
 
-	$OSI_Questions = "What layer allows hosts and applications to use a common language; `nperforms data formatting, encryption, and compression?", "What layer establishes, maintains, and terminates user connections?", "What layer ensures accurate delivery of data through flow control, segmentation and reassembly, error correction, and acknowledgement?", "What layer establishes network connections; translates network addresses into their physical counterparts and determines routing?", "What layer 
+	$OSI_Questions = "What layer allows hosts and applications to use a common language; `nperforms data formatting, encryption, and compression?", "What layer establishes, maintains, and terminates user connections?", "What layer ensures accurate delivery of data through flow control, segmentation and reassembly, error correction, and acknowledgement?", "What layer establishes network connections; translates network addresses into their physical counterparts and determines routing?", "What layer
     packages data in frames appropriate to network transmission method?", "What layer manages signaling to and from physical network connections?"
 
     $Random_OSI_Question = $OSI_Questions | Get-Random
@@ -4403,23 +4405,23 @@ function On_Click_Networking_Strip_Menu_Item_10($Sender,$e){
     $global:Random_OSI_Question = $Random_OSI_Question
 
 	$Body.Text = $Random_OSI_Question
-	
+
     if($Random_OSI_Question -eq "What layer allows hosts and applications to use a common language; `nperforms data formatting, encryption, and compression?"){
-    
+
     $Correct_Answer = "Presentation"
 
 	$global:Correct_Answer = $Correct_Answer
-    
+
     }
-    
+
     if($Random_OSI_Question -eq "What layer establishes, maintains, and terminates user connections?"){
-  
+
 	$Correct_Answer = "Session"
 
 	$global:Correct_Answer = $Correct_Answer
-    
+
     }
-    
+
     if($Random_OSI_Question -eq "What layer ensures accurate delivery of data through flow control, segmentation and reassembly, error correction, and acknowledgement?"){
     
     $Correct_Answer = "Transport"
